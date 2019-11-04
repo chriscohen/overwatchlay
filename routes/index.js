@@ -22,6 +22,7 @@ router.get('/api', function(req, res, next) {
         ow.playerStats(fullUser).then(playerStats => {
             console.log(playerStats);
 
+            // Get the competitive stats.
             let comp = playerStats.stats.competitive.all;
             console.log(comp);
 
@@ -33,7 +34,11 @@ router.get('/api', function(req, res, next) {
                 title: `Player stats for ${fullUser}`,
                 tank: tank,
                 damage: damage,
-                support: support
+                support: support,
+                gamesLost: comp.game.games_lost || 0,
+                gamesPlayed: comp.game.games_played || 0,
+                gamesTied: comp.game.games_tied || 0,
+                gamesWon: comp.game.games_won || 0
             });
         });
     } else {

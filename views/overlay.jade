@@ -2,6 +2,7 @@ extends overlay-layout
 
 block overlay
     div#overlay
+        div#loading
         div#title loading
         div#sr
             div#sr-tank
@@ -13,3 +14,13 @@ block overlay
             div#sr-support
                 i.icon.icon-support
                 span.sr.gold 0
+        div#wld
+            div#wld-win
+                span.wld-label Wins
+                span.wld-value.blue 0
+            div#wld-tie
+                span.wld-label Ties
+                span.wld-value.blue 0
+            div#wld-loss
+                span.wld-label Losses
+                span.wld-value.blue 0

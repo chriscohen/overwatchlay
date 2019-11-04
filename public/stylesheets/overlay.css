@@ -13,23 +13,36 @@ body {
   color: white; }
 
 div#overlay {
+  position: absolute;
   width: 600px;
   height: 200px;
   background: rgba(45, 45, 45, 0.8); }
   div#overlay div#title {
     font-size: 40px; }
-  div#overlay div#sr {
-    font-size: 36px;
+  div#overlay div#sr,
+  div#overlay div#wld {
+    font-size: 48px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: space-evenly; }
 
-span.sr {
-  margin-left: 0.75rem; }
+span.sr,
+span.wld-value {
+  margin-left: 0.75rem;
+  font-size: 60px; }
 
 .gold {
   color: #f8d128; }
+
+.blue {
+  color: #28d1f8; }
+
+.red {
+  color: #f82828; }
+
+.green {
+  color: #28f891; }
 
 i.icon {
   font-family: OverIcons, sans-serif; }
@@ -42,3 +55,12 @@ i.icon-dps:before {
 
 i.icon-support:before {
   content: "\e901"; }
+
+div#loading {
+  display: none;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background: url("/images/loading.gif"); }
