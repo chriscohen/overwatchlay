@@ -4,20 +4,32 @@ const router = express.Router();
 const oversmash = require('oversmash');
 const ow = oversmash.default();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-    let user = req.query.user;
+    res.render('index');
+});
+
+router.get('/overlay', function(req, res, next) {
+    res.render('overlay', {
+        title: `Player stats overlay`
+    });
+});
+
+router.get('/api', function(req, res, next) {
+    let user = req.query.user || '';
     let fullUser = checkPlayerName(user);
 
     if (fullUser !== false) {
         ow.playerStats(fullUser).then(playerStats => {
             console.log(playerStats);
 
+            let comp = playerStats.stats.competitive.all;
+            console.log(comp);
+
             let tank = playerStats.stats.competitive_rank.tank || 0;
             let damage = playerStats.stats.competitive_rank.damage || 0;
             let support = playerStats.stats.competitive_rank.support || 0;
 
-            res.render('index', {
+            res.json({
                 title: `Player stats for ${fullUser}`,
                 tank: tank,
                 damage: damage,
@@ -25,7 +37,7 @@ router.get('/', function(req, res, next) {
             });
         });
     } else {
-        res.render('error');
+        res.status(401).send('Invalid username');
     }
 });
 

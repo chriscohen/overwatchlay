@@ -1,8 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p Tank is #{tank}
-  p Damage is #{damage}
-  p Support is #{support}
+
+    div.container
+        div.row
+            h1 Overwatch Twitch stats overlay generator
+        div.row
+            div.col-6
+                h2 Options
+                form#options
+                    div.row
+                        label.col-6(for='username') Overwatch Username
+                        div.col-6
+                            input#username(type='text', placeholder='example#1234')
+                            div#username-error.text-danger
+                h2 Browser Source URL
+                p Copy this URL and add this as a browser source in your OBS or SLOBS.
+                textarea#result
+                p
+                    a#try.btn.btn-primary(target='_blank', href='#') Try it out
+            div.col-6
+                h2 What is this?
+                p For Twitch streamers, this will generate an overlay that you can include in your OBS or SLOBS to display your Overwatch profile data on the screen.

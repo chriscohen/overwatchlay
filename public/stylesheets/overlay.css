@@ -1,0 +1,44 @@
+@font-face {
+  font-family: BigNoodle;
+  src: url("/fonts/bignoodletoo.woff") format("woff"); }
+
+@font-face {
+  font-family: OverIcons;
+  src: url("/fonts/overicons.woff") format("woff"); }
+
+body {
+  background: none;
+  margin: 0;
+  font-family: BigNoodle, sans-serif;
+  color: white; }
+
+div#overlay {
+  width: 600px;
+  height: 200px;
+  background: rgba(45, 45, 45, 0.8); }
+  div#overlay div#title {
+    font-size: 40px; }
+  div#overlay div#sr {
+    font-size: 36px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly; }
+
+span.sr {
+  margin-left: 0.75rem; }
+
+.gold {
+  color: #f8d128; }
+
+i.icon {
+  font-family: OverIcons, sans-serif; }
+
+i.icon-tank:before {
+  content: "\e902"; }
+
+i.icon-dps:before {
+  content: "\e900"; }
+
+i.icon-support:before {
+  content: "\e901"; }

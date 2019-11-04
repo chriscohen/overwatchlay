@@ -13,5 +13,9 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "oversmash": "^1.6.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2"
   }
 }
