@@ -37,7 +37,7 @@ $.fn.updateResult = function() {
         let usernameUrlSafe = usernameToUrl(username) || 'example-1234';
 
         // Update the textarea with the copy/paste URL, and the "preview" button.
-        let url = 'http://63.34.49.225:3000/overlay?user=' + usernameUrlSafe;
+        let url = window.location.origin + '/overlay?user=' + usernameUrlSafe;
         $('#result').val(url);
         $('#try').attr('href', url);
     }

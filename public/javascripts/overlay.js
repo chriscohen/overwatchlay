@@ -17,11 +17,9 @@ $(document).ready(function() {
 
     $('#title').html(window.localStorage.getItem('username'));
 
-    if (debug) {
-        updateSuccess(debugData())
-    } else {
-        update();
-    }
+    // Perform an update, then set a timer to repeat every interval.
+    update();
+    let timer = setInterval(() => update(), refreshInterval * 1000);
 });
 
 function debugData() {
@@ -36,12 +34,41 @@ function debugData() {
     };
 }
 
+/**
+ * Extract query string values.
+ *
+ * https://stackoverflow.com/questions/4656843/jquery-get-querystring-from-url
+ *
+ * @returns {[]}
+ */
+function getUrlVars() {
+    let vars = [], hash;
+    let hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+
+    for(let i = 0; i < hashes.length; i++) {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 function update() {
+    console.log('Performing update...');
+
+    if (debug === true) {
+        console.log('Debug mode, not calling API');
+        updateSuccess(debugData());
+        return;
+    }
+
     // Show the loading spinner.
     $('div#loading').show();
 
     let base = window.location.origin;
-    let url = base + '/api?user=fw190a8-2772';
+    let vars = getUrlVars();
+
+    let url = base + '/api?user=' + vars.user;
 
     $.ajax({
         url: url,
@@ -49,6 +76,7 @@ function update() {
     }).done(function() {
         // Hide the loader when we're finished.
         $('div#loading').hide();
+        console.log('Update complete');
     });
 }
 
