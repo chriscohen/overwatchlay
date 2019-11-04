@@ -94,9 +94,9 @@ function updateSuccess(data) {
     $('#sr-support > span').html(data.support);
 
     // If we have a new session, put data into local storage.
-    if (window.localStorage.getItem('newSession') === true) {
+    if (window.localStorage.getItem('newSession') === '1') {
         updateSession(data);
-        window.localStorage.setItem('newSession', false);
+        window.localStorage.setItem('newSession', '0');
     }
 
     // Compare current data with local storage and update win-tie-lose ratios.
@@ -145,5 +145,5 @@ function setNewSession(stamp) {
     let lastSession = window.localStorage.getItem('lastAccess') || 0;
 
     // Work out if this is a "new session" or not.
-    window.localStorage.setItem('newSession', stamp - lastSession > newSessionInterval);
+    window.localStorage.setItem('newSession', ((stamp - lastSession > newSessionInterval) ? '1' : '0'));
 }
